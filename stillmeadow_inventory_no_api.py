@@ -55,7 +55,7 @@ agent = initialize_agent(
     memory=memory,
     verbose=True
 )
-agent_executor = AgentExecutor(agent = agent, tools = csv_tool, verbose=True, handle_parsing_errors=True)
+agent_executor = AgentExecutor(agent = agent, tools = [csv_tool], verbose=True, handle_parsing_errors=True)
 
 # Initialize Streamlit session state for history
 if "history" not in st.session_state:
