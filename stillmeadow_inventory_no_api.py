@@ -104,10 +104,10 @@ def main():
     if user_query:
         try:
             response = agent_executor.run(user_query)
-            if response:
-                st.write(response)  # Display the response
-            else:
-                st.write("No valid response from agent.")
+            
+            st.write(response)  # Display the response
+            
+            
         except Exception as e:
             st.write(f"Error processing the query: {e}")
     else:
