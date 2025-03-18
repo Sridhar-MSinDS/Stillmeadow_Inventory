@@ -99,12 +99,21 @@ def main():
     user_query = st.text_input("Ask about the inventory:", value=st.session_state.get('user_query', ''))
 
     # Displaying the response based on the query
+    # If there is a query, process it using the agent
     if user_query:
         try:
+            # Get the agent's response
             response = agent_executor.run(user_query)
-    
+
+            # Check if the response is valid before trying to write it
+            if response:
+                st.write(response)
+            else:
+                st.write("No response from agent.")
         except Exception as e:
-            print(f"Error during agent execution: {e}")
+            st.write(f"Error processing the query: {e}")
+    else:
+        st.write("Please enter a query.")
         st.subheader("🤖 Stillmeadow's AI Response:")
         st.write(response)
 
