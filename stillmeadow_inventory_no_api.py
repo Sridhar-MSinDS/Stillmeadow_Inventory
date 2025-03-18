@@ -14,6 +14,7 @@ from langchain.agents import initialize_agent, AgentType
 from langchain_community.tools import Tool
 from langchain.memory import ConversationBufferMemory
 from langchain.chat_models import ChatOpenAI
+from langchain.agents import AgentExecutor
 import streamlit as st
 
 # 1️⃣ Load environment variables
