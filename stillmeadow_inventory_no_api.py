@@ -54,7 +54,8 @@ agent = initialize_agent(
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     memory=memory,
     verbose=True,
-    handle_parsing_errors=True
+    handle_parsing_errors=True,
+    return_output_key=True
 )
 
 agent_executor = AgentExecutor(agent = agent, tools = [csv_tool], verbose=True, handle_parsing_errors=True)
@@ -102,18 +103,16 @@ def main():
     # If there is a query, process it using the agent
     if user_query:
         try:
-            # Get the agent's response
             response = agent_executor.run(user_query)
-
-            # Check if the response is valid before trying to write it
-            if response:
+            if response and isinstance(response, dict) and len(response) == 1:
                 st.write(response)
             else:
-                st.write("No response from agent.")
+                st.write("No valid response from agent.")
         except Exception as e:
             st.write(f"Error processing the query: {e}")
     else:
         st.write("Please enter a query.")
+
         st.subheader("🤖 Stillmeadow's AI Response:")
         st.write(response)
 
