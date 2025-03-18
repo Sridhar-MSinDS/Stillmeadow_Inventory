@@ -97,14 +97,15 @@ def main():
 
     # Input for user query
     user_query = st.text_input("Ask about the inventory:", value=st.session_state.get('user_query', ''))
+   # Initialize response variable (empty or None initially)
+    response = None  
 
     # Displaying the response based on the query
     if user_query:
         try:
             response = agent_executor.run(user_query)
-            # Check if the response is valid and print it
-            if isinstance(response, str):
-                st.write(response)  # Display the string response directly
+            if response:
+                st.write(response)  # Display the response
             else:
                 st.write("No valid response from agent.")
         except Exception as e:
@@ -112,9 +113,11 @@ def main():
     else:
         st.write("Please enter a query.")
 
-    # Add to history only if response exists
+    # Add to history only if a valid response exists
     if user_query and response:
         st.session_state.history.append((user_query, response))
+
+    
 
     # Display query history
     if st.session_state.history:
