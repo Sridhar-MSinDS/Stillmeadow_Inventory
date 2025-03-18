@@ -19,7 +19,7 @@ import streamlit as st
 # 1️⃣ Load environment variables
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY","your_api_key")
-OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+#OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 if not OPENAI_API_KEY:
     raise ValueError("❌ OpenAI API Key is missing! Set the OPENAI_API_KEY environment variable.")
