@@ -54,8 +54,7 @@ agent = initialize_agent(
     agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     memory=memory,
     verbose=True,
-    handle_parsing_errors=True,
-    return_output_key=True
+    handle_parsing_errors=True
 )
 
 agent_executor = AgentExecutor(agent = agent, tools = [csv_tool], verbose=True, handle_parsing_errors=True)
@@ -113,7 +112,7 @@ def main():
     else:
         st.write("Please enter a query.")
 
-    # Add to history
+    # Add to history only if response exists
     if user_query and response:
         st.session_state.history.append((user_query, response))
 
