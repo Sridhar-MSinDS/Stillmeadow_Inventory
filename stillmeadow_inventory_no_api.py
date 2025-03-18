@@ -104,7 +104,7 @@ def main():
             response = agent_executor.run(user_query)
     
         except Exception as e:
-            response = agent_executor.run(user_query)
+            print(f"Error during agent execution: {e}")
         st.subheader("🤖 Stillmeadow's AI Response:")
         st.write(response)
 
