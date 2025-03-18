@@ -100,7 +100,11 @@ def main():
 
     # Displaying the response based on the query
     if user_query:
-        response = agent_executor.run(user_query)
+        try:
+            response = agent_executor.run(user_query)
+    
+        except Exception as e:
+            response = agent_executor.run(user_query)
         st.subheader("🤖 Stillmeadow's AI Response:")
         st.write(response)
 
