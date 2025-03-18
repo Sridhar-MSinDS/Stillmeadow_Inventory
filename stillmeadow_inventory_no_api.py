@@ -71,8 +71,7 @@ sample_queries = [
     "What are the items available in Rack-4?",
     "What are the items available in hallway?",
     "What are the items available in Top Floor?",
-    "What are the items available in Basement?",
-    "Where can I find first aid box?"
+    "What are the items available in Basement?"
 ]
 
 # Streamlit Web Interface
