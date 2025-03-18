@@ -19,6 +19,7 @@ import streamlit as st
 # 1️⃣ Load environment variables
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY","your_api_key")
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 
 if not OPENAI_API_KEY:
     raise ValueError("❌ OpenAI API Key is missing! Set the OPENAI_API_KEY environment variable.")
@@ -66,7 +67,8 @@ sample_queries = [
     "What are the items available in Rack-4?",
     "What are the items available in hallway?",
     "What are the items available in Top Floor?",
-    "What are the items available in Basement?"
+    "What are the items available in Basement?",
+    "Where can I find first aid box?"
 ]
 
 # Streamlit Web Interface
